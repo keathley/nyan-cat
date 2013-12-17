@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.description = "Nyan Cat all of the things"
   s.authors     = ["Chris Keathley"]
   s.email       = 'spyc3r@gmail.com'
-  s.files       = ["lib/nyan-cat.rb"]
+  s.files       = ["lib/nyan_cat.rb"]
   s.homepage    =
-    'http://rubygems.org/gems/hola'
+    'https://github.com/spyc3r/nyan-cat'
   s.license       = 'MIT'
 end
