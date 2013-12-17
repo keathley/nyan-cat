@@ -9,6 +9,6 @@ Gem::Specification.new do |s|
   s.email       = 'spyc3r@gmail.com'
   s.files       = ["lib/nyan-cat.rb"]
   s.homepage    =
-    'http://rubygems.org/gems/hola'
+    'http://rubygems.org/gems/nyan-cat'
   s.license       = 'MIT'
 end
