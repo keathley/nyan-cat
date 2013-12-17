@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
 require 'nyan-cat'
+
+NyanCat.new.render

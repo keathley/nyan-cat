@@ -1,25 +1,22 @@
-FRAME1 = <<'END'
+class NyanCat
+
+  FRAME1 = <<'END'
 -_-_-_-_-_-_-_,------,
 _-_-_-_-_-_-_-|   /\_/\
 -_-_-_-_-_-_-~|__( ^ .^)
 _-_-_-_-_-_-_-""  ""
 END
 
-FRAME2 = <<'END'
+  FRAME2 = <<'END'
 _-_-_-_-_-_-_-,------,
 -_-_-_-_-_-_-_|   /\_/\
-_-_-_-_-_-_-_~|__( ^ .^)
--_-_-_-_-_-_-_" " " "
+_-_-_-_-_-_-_^|__( ^ .^)
+-_-_-_-_-_-_-_ ""  ""
 END
-
-class Cat
-  def initialize(*frames)
-    @frames = frames
-  end
 
   def render
     loop do
-      @frames.each do |frame|
+      frames.each do |frame|
         render_frame(frame)
       end
     end
@@ -27,10 +24,14 @@ class Cat
 
   private
 
+  def frames
+    [FRAME1, FRAME2]
+  end
+
   def render_frame(frame)
+    clear_screen
     puts frame
     delay_next_render
-    clear_screen
   end
 
   def delay_next_render
@@ -41,5 +42,3 @@ class Cat
     puts "\e[H\e[2J"
   end
 end
-
-Cat.new(FRAME1, FRAME2).render
