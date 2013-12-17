@@ -1,6 +1,7 @@
 Gem::Specification.new do |s|
-  s.name        = 'Nyan Cat'
+  s.name        = 'nyan-cat'
   s.version     = '0.0.1'
+  s.executables << 'nyan-cat'
   s.date        = '2013-12-17'
   s.summary     = "Command line cat"
   s.description = "Nyan Cat all of the things"
