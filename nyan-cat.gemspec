@@ -8,7 +8,6 @@ Gem::Specification.new do |s|
   s.authors     = ["Chris Keathley"]
   s.email       = 'spyc3r@gmail.com'
   s.files       = ["lib/nyan_cat.rb"]
-  s.homepage    =
-    'https://github.com/spyc3r/nyan-cat'
-  s.license       = 'MIT'
+  s.homepage    = 'https://github.com/spyc3r/nyan-cat'
+  s.license     = 'MIT'
 end
