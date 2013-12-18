@@ -5,7 +5,7 @@ class UI
 
   def render
     loop do
-      @cat.tick
+      render_frame(@cat.tick)
     end
   end
 

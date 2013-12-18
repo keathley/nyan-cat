@@ -1,16 +1,16 @@
 module NyanCat
   FRAME1 = <<'END'
--_-_-_-_-_-_- ,------,
-_-_-_-_-_-_-_ |   /\_/\
+-_-_-_-_-_-_-_,------,
+_-_-_-_-_-_-_-|   /\_/\
 -_-_-_-_-_-_-~|__( ^ .^)
-_-_-_-_-_-_-_ ""  ""
+_-_-_-_-_-_-_-""  ""
 END
 
   FRAME2 = <<'END'
-_-_-_-_-_-_-_ ,------,
--_-_-_-_-_-_- |   /\_/\
+_-_-_-_-_-_-_-,------,
+-_-_-_-_-_-_-_|   /\_/\
 _-_-_-_-_-_-_^|__( ^ .^)
--_-_-_-_-_-_-  ""  ""
+-_-_-_-_-_-_-_ ""  ""
 END
 
   class Cat
@@ -20,11 +20,8 @@ END
     end
 
     def tick(frame_count = nil)
-      if frame_count.nil?
-        frame_count = @frame_count
-        @frame_count += 1
-      end
-
+      frame_count ||= @frame_count
+      increment_internal_frame_count
       generate_cat(frame_count)
     end
 
@@ -40,8 +37,11 @@ END
     # This allows us to output a rainbow sine wave of color for the trail
     # We can use paint for that I believe
 
-    def generate_cat(frame_count)
+    def increment_internal_frame_count
+      @frame_count += 1
+    end
 
+    def generate_cat(frame_count)
       # Find the current index
       index = frame_count % @frames.count
       @frames[index]
