@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
-
-require 'nyan-cat'
+begin
+  require 'nyan-cat'
+rescue LoadError
+  require 'rubygems'
+  require 'nyan-cat'
+end
 
 NyanCat::UI.new(NyanCat.new_cat(:trail_length => 20)).render
