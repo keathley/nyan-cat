@@ -1,22 +1,24 @@
 require 'minitest/autorun'
 require 'minitest/spec'
 
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'nyan_cat'
 
 describe NyanCat do
   before do
     @cat = NyanCat.new_cat
     @cat_frame_1 = (<<'END').strip
--_-_-_-_-_-_-_,------,
-_-_-_-_-_-_-_-|   /\_/\
--_-_-_-_-_-_-~|__( ^ .^)
-_-_-_-_-_-_-_-""  ""
+-_-_-_-_-_,------,
+_-_-_-_-_-|   /\_/\
+-_-_-_-_-~|__( ^ .^)
+_-_-_-_-_-""  ""
 END
     @cat_frame_2 = (<<'END').strip
-_-_-_-_-_-_-_-,------,
--_-_-_-_-_-_-_|   /\_/\
-_-_-_-_-_-_-_^|__( ^ .^)
--_-_-_-_-_-_-_ ""  ""
+_-_-_-_-_-,------,
+-_-_-_-_-_|   /\_/\
+_-_-_-_-_^|__( ^ .^)
+-_-_-_-_-_ ""  ""
 END
   end
 

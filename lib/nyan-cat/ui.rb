@@ -1,27 +1,29 @@
-class UI
-  def initialize(cat)
-    @cat = cat
-  end
-
-  def render
-    loop do
-      render_frame(@cat.tick)
+module NyanCat
+  class UI
+    def initialize(cat)
+      @cat = cat
     end
-  end
 
-  private
+    def render
+      loop do
+        render_frame(@cat.tick)
+      end
+    end
 
-  def render_frame(frame)
-    clear_screen
-    puts frame
-    delay_next_render
-  end
+    private
 
-  def delay_next_render
-    sleep (1.0/8.0)
-  end
+    def render_frame(frame)
+      clear_screen
+      puts frame
+      delay_next_render
+    end
 
-  def clear_screen
-    puts "\e[H\e[2J"
+    def delay_next_render
+      sleep (1.0/8.0)
+    end
+
+    def clear_screen
+      puts "\e[H\e[2J"
+    end
   end
 end
