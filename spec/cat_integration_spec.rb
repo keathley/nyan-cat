@@ -3,7 +3,7 @@ require 'minitest/spec'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-require 'nyan_cat'
+require 'nyan-cat'
 
 describe NyanCat do
   before do
