@@ -2,4 +2,4 @@
 
 require 'nyan-cat'
 
-NyanCat.new.render
+NyanCat::UI.new(NyanCat.new_cat(:trail_length => 20)).render
