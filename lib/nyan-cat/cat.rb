@@ -1,3 +1,5 @@
+require 'paint'
+
 module NyanCat
   FRAME1 = <<'END'
 _,------,
@@ -42,7 +44,8 @@ END
       lines = frame.split(/\r?\n/)
       frame_with_trails = lines.map.with_index do |line, i|
         @trail_length.times do |j|
-          line.prepend(trail_char(index, i, j))
+          color_index = j - @frame_count % @trail_length
+          line.prepend(Paint[trail_char(index, i, j), rainbow(color_index)])
         end
         line
       end
@@ -51,6 +54,13 @@ END
 
     def trail_char(frame_index, line_index, trail_index)
       ((frame_index + line_index + trail_index) % 2).zero? ? '-' : '_'
+    end
+
+    def rainbow(freq = 0.3, i)
+      red   = Math.sin(freq*i + 0) * 127 + 128
+      green = Math.sin(freq*i + 2*Math::PI/3) * 127 + 128
+      blue  = Math.sin(freq*i + 4*Math::PI/3) * 127 + 128
+      "#%02X%02X%02X" % [ red, green, blue ]
     end
   end
 end
