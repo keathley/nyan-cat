@@ -1,3 +1,5 @@
+require 'paint'
+
 module NyanCat
   FRAME1 = <<'END'
 _,------,
@@ -15,9 +17,10 @@ END
 
   class Cat
     def initialize(opts = {})
-      @frames       = opts.fetch(:frames) { [FRAME1, FRAME2] }
-      @trail_length = opts.fetch(:trail_length) { 9 }
-      @frame_count  = 0
+      @frames         = opts.fetch(:frames) { [FRAME1, FRAME2] }
+      @trail_length   = opts.fetch(:trail_length) { 9 }
+      @colorize_trail = opts.fetch(:colorize) { true }
+      @frame_count    = 0
     end
 
     def tick(frame_count = nil)
@@ -42,11 +45,23 @@ END
       lines = frame.split(/\r?\n/)
       frame_with_trails = lines.map.with_index do |line, i|
         @trail_length.times do |j|
-          line.prepend(trail_char(index, i, j))
+          color_index = j - @frame_count % @trail_length
+          if @colorize_trail
+            line.prepend(Paint[trail_char(index, i, j), rainbow(color_index)])
+          else
+            line.prepend(trail_char(index, i, j))
+          end
         end
         line
       end
       frame_with_trails.join("\n")
+    end
+
+    def rainbow(freq = 0.3, i)
+      red   = Math.sin(freq*i + 0) * 127 + 128
+      green = Math.sin(freq*i + 2*Math::PI/3) * 127 + 128
+      blue  = Math.sin(freq*i + 4*Math::PI/3) * 127 + 128
+      "#%02X%02X%02X" % [ red, green, blue ]
     end
 
     def trail_char(frame_index, line_index, trail_index)
