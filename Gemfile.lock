@@ -8,9 +8,11 @@ GEM
   remote: https://rubygems.org/
   specs:
     paint (0.8.6)
+    rake (10.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   nyan-cat!
+  rake
