@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nyan-cat (0.0.3)
+    nyan-cat (0.0.4)
       paint (~> 0.8.6)
 
 GEM
