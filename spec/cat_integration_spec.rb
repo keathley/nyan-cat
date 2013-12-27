@@ -1,8 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/spec'
 
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'nyan-cat'
 
 describe NyanCat do
@@ -44,7 +42,7 @@ END
       # this is just a punt since matching the whole string with the colors
       # is a bit of pain.  So instead we just use a simple regex to match
       # against a specific color.  We're not really validating that the colors
-      # are correct or anything.  Just that they are populated.
+      # are correct or anything.  Just that they are present.
       it "should add colors to the trail" do
         cat = NyanCat.new_cat(:colorize => true)
         result = cat.tick.strip
