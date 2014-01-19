@@ -23,8 +23,7 @@ END
       @frame_count    = 0
     end
 
-    def tick(frame_count = nil)
-      frame_count ||= @frame_count
+    def tick(frame_count = @frame_count)
       increment_internal_frame_count
       generate_cat(frame_count)
     end
@@ -45,8 +44,8 @@ END
       lines = frame.split(/\r?\n/)
       frame_with_trails = lines.map.with_index do |line, i|
         @trail_length.times do |j|
-          color_index = j - @frame_count % @trail_length
           if @colorize_trail
+            color_index = j - @frame_count % @trail_length
             line.prepend(Paint[trail_char(index, i, j), rainbow(color_index)])
           else
             line.prepend(trail_char(index, i, j))
@@ -54,6 +53,7 @@ END
         end
         line
       end
+
       frame_with_trails.join("\n")
     end
 
