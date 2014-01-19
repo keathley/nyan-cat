@@ -6,4 +6,6 @@ rescue LoadError
   require 'nyan-cat'
 end
 
+trap("SIGINT") { exit! }
+
 NyanCat::UI.new(NyanCat.new_cat(:trail_length => 20)).render

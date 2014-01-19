@@ -13,17 +13,18 @@ module NyanCat
     private
 
     def render_frame(frame)
-      clear_screen
-      puts frame
+      printf frame
       delay_next_render
+      clear_screen(frame)
     end
 
     def delay_next_render
       sleep (1.0/8.0)
     end
 
-    def clear_screen
-      puts "\e[H\e[2J"
+    def clear_screen(frame)
+      length = (frame.split("\n").length - 1)
+      printf "\e[1A" * length + "\r"
     end
   end
 end
